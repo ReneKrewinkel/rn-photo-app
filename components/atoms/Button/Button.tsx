@@ -1,14 +1,20 @@
 // import { useState, useEffect, useContext } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { ButtonInterface } from './Button.interface'
 import ButtonStyle from './Button.style'
 
-/// TODO: update interface/arguments for Button
-const Button = ({ testID, style, type, size, props }: ButtonInterface) => {
+const Button = ({ testID, text, action }: ButtonInterface) => {
+
+  const handler = () => {
+    action()
+  }
+
   return (
-    <View testID={testID} style={ButtonStyle.View}>
-      <Text>Button</Text>
-    </View>
+    <TouchableOpacity onPress={ () => handler() }
+                      testID={testID}
+                      style={ButtonStyle.View}>
+      <Text>{ text }</Text>
+    </TouchableOpacity>
   )
 }
 
